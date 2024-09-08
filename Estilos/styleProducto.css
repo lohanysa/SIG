@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary: #111926;
+    --white: #fff;
+    --background: #F8F8FF;
+    --gray: #D3D3D3;
+}
+
+.dropzone-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.dropzone-box {
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: rgba(78, 81, 84, 0.118) 0px 8px 24px;
+    max-width: 36rem;
+    width: 100%;
+    background-color: var(--white);
+    overflow: auto; /* Permitir el desplazamiento en el dropzone-box si es necesario */
+}
+
+.dropzone-box-area {
+    border-radius: 2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 36rem;
+    width: 100%;
+    background-color: var(--white);
+    overflow: auto; /* Permitir el desplazamiento en el dropzone-box-area si es necesario */
+}
+
+.dropzone-box-area h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.dropzone-area {
+    padding: 1rem;
+    position: relative;
+    margin-top: 1rem;
+    min-height: 16rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px dashed var(--primary);
+    border-radius: 1rem;
+    color: var(--primary);
+    cursor: pointer;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.dropzone-area p {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+}
+
+.dropzone-area [type="button"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dropzone-area img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+.dropzone--over {
+    border-style: solid;
+    background-color: var(--background);
+}
+
+.dropzone-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--gray);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.dropzone-actions button {
+    flex-grow: 1;
+    min-height: 3rem;
+    font-size: 1.2rem;
+}
+
+.dropzone-actions button:hover {
+    text-decoration: underline;
+}
+
+.dropzone-actions button[type='reset'] {
+    background-color: transparent;
+    border: 1px solid var(--gray);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.dropzone-actions button[type='button'] {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.dropzone-box-area input[type='text'],
+.dropzone-box-area textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #3498db;
+    color: #070000;
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: none; /* Por defecto oculto */
+    z-index: 9999; /* Asegura que esté arriba de otros elementos */
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-icon {
+    margin-right: 10px; /* Espacio entre el icono y el mensaje */
+    font-size: 1.5rem; /* Tamaño del icono */
+}
+
+.toast.show {
+    display: flex; /* Mostrar cuando tiene la clase 'show' */
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.toast.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-20px);
+}
+
+.toast.success {
+    background-color: #85c1d3; /* Color verde para éxito */
+}
+
+.toast.error {
+    background-color: #ff9187; /* Color rojo para error */
+}
+
+.toast.info {
+    background-color: #434083; /* Color azul para información */
+}

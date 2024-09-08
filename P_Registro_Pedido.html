@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugumis Store</title>
+    <link rel="icon" href="Assets/Mugumis.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="Estilos/stylesIndex.css">
+    <link rel="stylesheet" href="Estilos/stylesNotificacion.css">
+    <link rel="stylesheet" href="Estilos/styleProducto.css?v=2.0">
+    <link rel="stylesheet" href="Estilos/stylesCatalogo.css">
+    <link rel="stylesheet" href="Estilos/stylesModal.css?v=1.1">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo">
+            <img src="Assets/logoMugumis.png" alt="Logo">
+        </div>
+        <div class="user-reg"></div>
+    </nav>
+    <!-- Contenido del pedido como objeto físico en la página -->
+    <div class="pedido-container">
+        <p class="close-button" id="closePedido">&times;</p>
+        <h2>Pedido</h2>
+        <img src="" alt="" id="modal-img">
+        <p id="modal-articulo">Artículo seleccionado: </p>
+        <p id="modal-descripcion">Descripción: </p>
+        <p id="modal-precio">Precio: </p>
+        <input id="email" type="email" placeholder="Correo electrónico" required>
+        <select id="metodoPago">
+            <option value="Efectivo">Efectivo</option>
+            <option value="Yappy" selected>Yappy</option>
+        </select>
+        <input type="number" id="cantidad" min="1" max="5" step="1" value="1">
+        <input type="hidden" id="idAmiguru">
+        <p><button id="submitPedido">Solicitar Pedido</button></p>
+    </div>
+    <!-- Pie de página -->
+    <footer id="contacto" class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <p>La empresa opera como un negocio independiente, ofreciendo productos de calidad artesanal tanto a través de pedidos personalizados como de diseños básicos que son expuestos y vendidos.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="p_Inicio.html">Inicio</a></li>
+                    <li><a href="p_Catalogo.php">Catálogo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Email: mugumis.store@gmail.com</p>
+                <p>Teléfono: +507 253-0000</p>
+                <p>Celular: +507 6559-0000</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Desarrollo de Software. Todos los derechos reservados.</p>
+            <p><i>Lohanys</i>, <i>Johny</i>, <i>Raúl</i>, <i>Josué</i>, <i>Chirag</i></p>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast">
+        <span class="toast-icon">ℹ️</span>
+        <span class="toast-message"></span>
+    </div> 
+
+    <script src="Scripts/scriptsCatalogo.js?v=2.0"></script>
+</body>
+</html>

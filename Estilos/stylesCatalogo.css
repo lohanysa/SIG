@@ -1,0 +1,151 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    flex: 1;
+}
+
+main h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #d28f6c;
+}
+
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+main article {
+    margin: 30px;
+    padding: 30px;
+    border: 1px solid #d5a18c;
+    border-radius: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #edc6a6;
+}
+
+main article img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+main article h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #a15d4a;
+}
+
+main article p {
+    font-size: 1rem;
+    margin-bottom: 0px;
+    color: #a15d4a;
+}
+
+main article h4 {
+    margin-bottom: 10px;
+    color: #a15d4a;
+}
+
+main article button {
+    background-color: #0e3250;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Estilos para el modal de catálogo */
+.modal-catalogo {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-catalogo .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slide-down 0.4s ease-out;
+}
+
+.modal-catalogo .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-catalogo .close:hover,
+.modal-catalogo .close:focus {
+    color: #333;
+}
+
+.modal-catalogo h2 {
+    color: #ff6f61;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-catalogo input[type="email"],
+.modal-catalogo input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.modal-catalogo input[type="email"]:focus,
+.modal-catalogo input[type="password"]:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.6);
+    outline: none;
+}
+
+.modal-catalogo button {
+    padding: 12px 25px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.modal-catalogo button:hover {
+    background-color: #e65b54;
+    box-shadow: 0 8px 16px rgba(255, 111, 97, 0.3);
+}
+

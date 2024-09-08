@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugumis Store</title>
+    <link rel="icon" href="Assets/Mugumis.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Estilos/stylesIndex.css">
+    <link rel="stylesheet" href="Estilos/stylesModal.css">
+    <link rel="stylesheet" href="Estilos/stylesNotificacion.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo">
+            <img src="Assets/logoMugumis.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="p_Inicio.html">Inicio</a></li>
+            <li><a href="p_Catalogo.php">Catálogo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="user-reg">
+            <a href="#" id="registerUserLink"><i class="fa-regular fa-user"></i> Registro de Usuario</a>
+            <a href="Vista_Administrador/p_Login.html"><i class="fa-regular fa-user"></i>Administrador</a>
+        </div>
+    </nav>
+
+        <!-- Modal de registro de correo electrónico -->
+    <div id="registerEmailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registro de Correo Electrónico</h2>
+            <form id="registerEmailForm">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <p></p><button type="submit">Registrar</button></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de registro de información adicional -->
+    <div id="registerAdditionalInfoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registro de Información Adicional</h2>
+            <form id="registerAdditionalInfoForm">
+                <!-- Agregar campos adicionales según necesidad -->
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <label for="lastName">Apellido:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <label for="phoneNumber">Número de Teléfono:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                <p></p><button type="submit">Registrar</button></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notificación de registro exitoso -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <i class="fa fa-check-circle"></i>
+            <p>Datos registrados exitosamente</p>
+        </div>
+    </div>
+
+    <!-- Notificación de correo existente -->
+    <div id="notificationEmailExists" class="notification">
+        <div class="notification-content">
+            <i class="fa fa-exclamation-circle"></i>
+            <p>El correo electrónico ya está registrado</p>
+        </div>
+    </div>
+
+
+    <!-- Encabezado con galería de imágenes -->
+    <header>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="Assets/banners/banner-1.jpg" alt="Imagen 1">
+            </div>
+            <div class="gallery-item">
+                <img src="Assets/banners/banner-2.jpg" alt="Imagen 2">
+            </div>
+            <div class="gallery-item">
+                <img src="Assets/banners/banner-3.jpg" alt="Imagen 3">
+            </div>
+        </div>
+    </header>
+
+    <!-- Información sobre Mugumis -->
+    <main id="main">
+        <h1>Conoce sobre nosotros</h1>
+        <div class="section-container">
+            <img src="Assets/mision-mugumis.jpg" alt="Misión">
+            <div class="section-content">
+                <section>
+                    <h2>Misión</h2>
+                    <p>Brindar alegría y calidez a través de la creación de amigurumis 
+                        únicos y personalizados, confeccionados con amor y precisión.</p>
+                </section>
+            </div>
+        </div>
+        <div class="section-container">
+            <img src="Assets/vision-mugumis.jpg" alt="Visión">
+            <div class="section-content">
+                <section>
+                    <h2>Visión</h2>
+                    <p>Ser reconocidos como un referente en el mundo de los amigurumis, 
+                        destacándonos por nuestra creatividad, calidad y compromiso con la 
+                        satisfacción del cliente.</p>
+                </section>
+            </div>
+        </div>
+        <div class="section-container">
+            <img src="Assets/enfoque-mugumis.jpg" alt="Enfoque">
+            <div class="section-content">
+                <section>
+                    <h2>Nuestro Enfoque</h2>
+                    <p>El mercado objetivo de "Mugumis Store" incluye personas que buscan 
+                        regalos especiales, coleccionistas de amigurumis y amantes de los juguetes 
+                        hechos a mano. Nos dirigimos a personas que valoran la artesanía, la creatividad y 
+                        la personalización en sus productos, y que desean adquirir amigurumis únicos y de 
+                        alta calidad para sí mismos o como regalos para sus seres queridos.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="contacto" class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <p>La empresa opera como un negocio independiente, ofreciendo productos de calidad artesanal 
+                    tanto a través de pedidos personalizados como de diseños básicos que son expuestos y vendidos.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="p_Inicio.html">Inicio</a></li>
+                    <li><a href="p_Catalogo.php">Catálogo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Email: mugumis.store@gmail.com</p>
+                <p>Teléfono: +507 253-0000</p>
+                <p>Celular: +507 6559-0000</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Desarrollo de Software. Todos los derechos reservados.</p>
+            <p><i>Lohanys</i>, <i>Johny</i>, <i>Raúl</i>, <i>Josué</i>, <i>Chirag</i></p>
+        </div>
+    </footer>
+
+    <script src="Scripts/scriptsIndex.js"></script>
+    <script src="Scripts/scriptsModal.js?v=1.2"></script>
+    <script src="Scripts/scriptsNotificacion.js?v=1.1"></script>
+    <!-- ?v=N.n al final de un script ayuda a que el navegador actualize cambios realizados subir la cifra por cada cambio importante(1.1 - 1.2... 1.9 - 2.0...N.n) -->
+</body>
+</html>

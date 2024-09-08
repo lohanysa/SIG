@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugumis Store</title>
+    <link rel="icon" href="../Assets/Mugumis.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../Estilos/stylesIndex.css">
+    <link rel="stylesheet" href="../Estilos/styleProducto.css?v=1.2">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo">
+            <img src="../Assets/logoMugumis.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="p_GestionCatalogo.php">Catálogo</a></li>
+            <li><a href="p_Producto.html">Añadir Producto</a></li>
+            <li><a href="p_pedidos.php">Pedidos</a></li>
+        </ul>
+    </nav>
+
+    <!-- para Agregar Amigurumis -->
+    <div class="dropzone-container">
+        <form class="dropzone-box" id="dropzone-box" method="post">
+            <div class="dropzone-box-area">
+                <h2>Añadir Nuevo producto</h2>
+                <div class="dropzone-area" id="dropzone-area">
+                    <div class="file-upload-icon">
+                        <!-- svg icon -->
+                    </div>
+                    <p>Imagen del producto</p>
+                    <p>+</p>
+                    <button type="button" id="open-gallery"></button>
+                    <!-- En lugar de input file -->
+                </div>
+                <input type="hidden" id="image-url" name="image-url">
+                <input type="hidden" id="Id" name="Id">
+                <br>
+                <p>Nombre del Amigurumi:</p>
+                <input type="text" id="Name" name="Name">
+                <br>
+                <p>Coste:</p>
+                <input type="text" id="Priece" name="Priece" placeholder="0.00">
+                <br>
+                <p>Descripción:</p>
+                <textarea id="Descripcion" name="Descripcion"></textarea>
+                <br>
+                <p>Cantidad:</p>
+                <input type="text" id="Cantidad" name="Cantidad" placeholder="0">
+                <div class="dropzone-actions">
+                    <button type="button" id="Reset">Cancelar</button>
+                    <button id="submit-button" type="button">Guardar</button>
+                    <button id="Delete" type="button">Eliminar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Pie de página -->
+    <footer id="contacto" class="footer">
+    </footer>
+
+    <div id="toast-notification" class="toast">
+        <span class="toast-icon">ℹ️</span>
+        <span class="toast-message"></span>
+    </div>
+
+    <script>
+        class Product {
+            constructor(builder) {
+                this.imageUrl = builder.imageUrl;
+                this.id = builder.id;
+                this.name = builder.name;
+                this.price = builder.price;
+                this.description = builder.description;
+                this.quantity = builder.quantity;
+            }
+
+            static get Builder() {
+                class Builder {
+                    setImageUrl(imageUrl) {
+                        this.imageUrl = imageUrl;
+                        return this;
+                    }
+
+                    setId(id) {
+                        this.id = id;
+                        return this;
+                    }
+
+                    setName(name) {
+                        this.name = name;
+                        return this;
+                    }
+
+                    setPrice(price) {
+                        this.price = price;
+                        return this;
+                    }
+
+                    setDescription(description) {
+                        this.description = description;
+                        return this;
+                    }
+
+                    setQuantity(quantity) {
+                        this.quantity = quantity;
+                        return this;
+                    }
+
+                    build() {
+                        return new Product(this);
+                    }
+                }
+                return Builder;
+            }
+        }
+
+        function mostrarToast(mensaje, tipo) {
+            const toast = document.getElementById('toast-notification');
+            const toastMessage = toast.querySelector('.toast-message');
+            const toastIcon = toast.querySelector('.toast-icon');
+
+            toast.classList.remove('success', 'error', 'info');
+            toastIcon.textContent = '';
+
+            if (tipo === "success") {
+                toast.classList.add('success');
+                toastIcon.textContent = "✔️";
+            } else if (tipo === "error") {
+                toast.classList.add('error');
+                toastIcon.textContent = "❌";
+            } else if (tipo === "info") {
+                toast.classList.add('info');
+                toastIcon.textContent = "ℹ️";
+            }
+
+            toastMessage.textContent = mensaje;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function setupGalleryButton() {
+            const galleryButton = document.getElementById('open-gallery');
+            const dropzoneArea = document.getElementById('dropzone-area');
+
+            if (galleryButton) {
+                galleryButton.addEventListener('click', openGallery);
+            }
+
+            if (dropzoneArea) {
+                dropzoneArea.addEventListener('click', openGallery);
+            }
+        }
+
+        function openGallery() {
+            const galleryWindow = window.open('https://raularica.github.io/Index.html', 'Galería', 'width=800,height=600');
+
+            window.addEventListener('message', function(event) {
+                const selectedImageUrl = event.data;
+
+                document.getElementById('dropzone-area').innerHTML = `
+                    <img src="${selectedImageUrl}" alt="Preview">
+                `;
+                document.getElementById('image-url').value = selectedImageUrl;
+                setupGalleryButton();
+            }, { once: true });
+        }
+
+        document.getElementById('submit-button').addEventListener('click', function() {
+            const product = new Product.Builder()
+                .setImageUrl(document.getElementById('image-url').value)
+                .setId(document.getElementById('Id').value)
+                .setName(document.getElementById('Name').value)
+                .setPrice(document.getElementById('Priece').value)
+                .setDescription(document.getElementById('Descripcion').value)
+                .setQuantity(document.getElementById('Cantidad').value)
+                .build();
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¿Estás seguro de que deseas guardar los cambios?",
+                iconHtml: '<i class="fas fa-save"></i>',
+                customClass: {
+                    icon: 'swal2-icon-custom'
+                },
+                background: '#e0f7fa',
+                showCancelButton: true,
+                confirmButtonColor: '#4caf50',
+                cancelButtonColor: '#8b2727',
+                confirmButtonText: 'Sí, guardar cambios',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../Server/Producto.php",
+                        data: {
+                            "image-url": product.imageUrl,
+                            "Id": product.id,
+                            "Name": product.name,
+                            "Priece": product.price,
+                            "Descripcion": product.description,
+                            "Cantidad": product.quantity
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                mostrarToast("Cambios guardados correctamente.", "success");
+                                setTimeout(() => {
+                                    window.location.href = 'p_GestionCatalogo.php';
+                                }, 1500);
+                            } else {
+                                mostrarToast("Ocurrió un problema.", "error");
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            mostrarToast("Error al conectar con el servidor. Intente de nuevo más tarde.", "error");
+                        }
+                    });
+                }
+            });
+        });
+
+        document.getElementById('Delete').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Eliminar producto',
+                text: "¿Estás seguro de que deseas eliminar este producto?",
+                icon: 'warning',
+                background: '#e0f7fa',
+                showCancelButton: true,
+                confirmButtonColor: '#4caf50',
+                cancelButtonColor: '#8b2727',
+                confirmButtonText: 'Sí, Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const idAmigurumis = document.getElementById('Id').value;
+                    if (!idAmigurumis) {
+                        mostrarToast("No se puede eliminar un producto que no existe.", "info");
+                        return;
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: "../Server/Producto.php",
+                        data: { action: 'Delete', Id: idAmigurumis },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                mostrarToast("Producto eliminado del catálogo.", "success");
+                                setTimeout(() => {
+                                    window.location.href = 'p_GestionCatalogo.php';
+                                }, 1500);
+                            } else {
+                                mostrarToast("Ocurrió un problema al eliminar el producto.", "error");
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            mostrarToast("Error al conectar con el servidor. Intente de nuevo más tarde.", "error");
+                        }
+                    });
+                }
+            });
+        });
+
+        document.getElementById('Reset').addEventListener('click', function() {
+            localStorage.removeItem('editAmigurumi');
+            location.reload();
+        });
+
+        setupGalleryButton();
+
+        const editAmigurumi = JSON.parse(localStorage.getItem('editAmigurumi'));
+        if (editAmigurumi) {
+            document.getElementById('image-url').value = editAmigurumi.imagenSrc;
+            document.getElementById('Id').value = editAmigurumi.idAmigurumis;
+            document.getElementById('Name').value = editAmigurumi.nombre;
+            document.getElementById('Priece').value = editAmigurumi.precio;
+            document.getElementById('Descripcion').value = editAmigurumi.descripcion;
+            document.getElementById('Cantidad').value = editAmigurumi.cantidadDisponible;
+
+            const dropzoneArea = document.getElementById('dropzone-area');
+            dropzoneArea.innerHTML = `<img src="${editAmigurumi.imagenSrc}" alt="Preview">`;
+        }
+    </script>
+</body>
+</html>

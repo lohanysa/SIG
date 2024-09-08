@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="../Estilos/stylesLogin.css">
+<script defer src="../Scripts/scriptsLogin.js?v=1.2"></script>
+  </head>
+  <body>
+  <form id="FRLogin">
+    <div class="container">
+      <div class="content">
+        <div class="header">
+            <img src="../Assets/logoMugumis.png" alt="Logo" class="header-logo">
+        </div>
+<!-- Encabezado -->
+        <h1>Bienvenido Administrador</h1>
+
+        <div class="email-log-in">
+          <input type="text" id="userName" name="userName" placeholder="Email">
+          <label for="log-in">Usuario</label>
+        </div>
+        <br>
+
+        <div class="email-log-in">
+          <input type="password" id="Clave" name="Clave"  placeholder="Email">
+          <label for="log-in">Contraseña</label>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="primary-button" onclick="Entrar(event)" >Ingresar</button>
+        </div>
+
+        <div id="toast-notification" class="toast">
+          <span class="toast-icon">ℹ️</span>
+          <span class="toast-message"></span>
+        </div>
+        
+      </div>
+    </div>
+  </form>
+  </body>
+</html>

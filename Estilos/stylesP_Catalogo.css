@@ -1,0 +1,80 @@
+body {
+    background-image:url('../Assets/image.png') ;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3b0ca0;
+    opacity: 0.09; /* Ajusta la opacidad según la intensidad del color que desees */
+    z-index: -1; /* Asegúrate de que el overlay esté detrás del contenido */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    flex: 1;
+}
+
+main h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #d28f6c;
+}
+
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+main article {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #d5a18c;
+    border-radius: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+main article h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #a15d4a;
+}
+
+main article p {
+    font-size: 1rem;
+    margin-bottom: 0px;
+    color: #edc6a6;
+}
+
+main article button {
+    background-color: #0e3250;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
