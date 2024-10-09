@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 $servername = "localhost";
 $username = "Gerencial";
-$password = "Root";
+$password = "root";
 $database = "mugumis";
 
 try {

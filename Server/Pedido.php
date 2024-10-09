@@ -34,6 +34,7 @@ try {
                 $stmtCantidad->execute();
                 $filaCantidad = $stmtCantidad->fetch(PDO::FETCH_ASSOC);
 
+                //con esto se hacegura que el cliente no pida mas de lo que 
                 if ($filaCantidad && $filaCantidad['cantidad_disponible'] >= $cantidad) {
                     // Si el cliente no tiene amigurumi asignado, se le asigna
                     if (is_null($fkAmig)) {

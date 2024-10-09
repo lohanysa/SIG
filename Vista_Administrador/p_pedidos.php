@@ -123,12 +123,21 @@
             <li><a href="p_Gestioncatalogo.php">Catalogo</a></li>
             <li><a href="P_Producto.html">Añadir Producto</a></li>
             <li><a href="p_pedidos.php">Pedidos</a></li>
+            <li><a href="Analisis/Dashboard.php">Analisis</a></li>
         </ul>
+
+        <div class="user-reg">
+            <a href="../p_Inicio.html" ><i class="fa-regular fa-user"></i>Usuario</a>
+        </div>
     </nav>
 
 
     <!-- Catálogo de productos -->
+    
     <main>
+    <div class="mt-10">
+        
+        </div>
         <h1>Gestion de pedidos</h1>
         <section class="Tabula">
             <div class="container">

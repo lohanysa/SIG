@@ -27,6 +27,7 @@
         </ul>
         <div class="user-reg">
             <a href="#" id="registerUserLink"><i class="fa-regular fa-user"></i> Registro de Usuario</a>
+            <a href="Vista_Administrador/p_Login.html"><i class="fa-regular fa-user"></i>Administrador</a>
         </div>
     </nav>
 
