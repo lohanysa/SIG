@@ -15,18 +15,20 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
 
         // Prepare and execute the second query
         $sqlurl = "
-            SELECT 
-                pe.id_pedido,
-                cl.id_correo,
-                inv.direccion_url
-            FROM 
-                Pedido pe
-            JOIN 
-                Cliente cl ON pe.fk_cliente = cl.id_correo
-            JOIN 
-                Inventario_de_amigurumis inv ON cl.fk_amigurumis = inv.id_amigurumis
-            WHERE 
-                pe.id_pedido = :id";
+                 SELECT 
+                    pe.id_pedido,
+                    pe.fk_amigurumis,
+                    cl.id_correo,
+                    inv.direccion_url
+                FROM 
+                    Pedido pe
+                JOIN 
+                    Cliente cl ON pe.fk_cliente = cl.id_correo
+                JOIN 
+                    Inventario_de_amigurumis inv ON pe.fk_amigurumis = inv.id_amigurumis
+                WHERE 
+                    pe.id_pedido = :id";
+
         $stmtUrl = $conn->prepare($sqlurl);
         $stmtUrl->bindParam(':id', $idPedido, PDO::PARAM_INT);
         $stmtUrl->execute();
@@ -38,7 +40,7 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
             $response['fecha'] = $registro['fecha'];
             $response['metodo_pago'] = $registro['metodo_pago'];
             $response['cantidad'] = $registro['cantidad'];
-            $response['fk_empleado'] = $registro['fk_empleado'];
+            $response['fk_amigurumis'] = $registro['fk_amigurumis'];
             $response['fk_cliente'] = $registro['fk_cliente'];
             $response['direccion_url'] = $registro2['direccion_url'];
         } else {

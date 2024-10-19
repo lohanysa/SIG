@@ -45,9 +45,9 @@ CREATE TABLE Pedido (
     fecha DATE,
     cantidad INT,
     metodo_pago VARCHAR(20),
-    fk_empleado INT,
+    fk_amigurumis INT,
     fk_cliente VARCHAR(50),
-    FOREIGN KEY (fk_empleado) REFERENCES Empleado(id_empleado),
+    FOREIGN KEY (fk_amigurumis) REFERENCES Inventario_de_amigurumis(id_amigurumis),
     FOREIGN KEY (fk_cliente) REFERENCES Cliente(id_correo)
 );
 

@@ -146,6 +146,7 @@
                     <div class="cell">Estado</div>
                     <div class="cell">Fecha</div>
                     <div class="cell">Correo del Cliente</div>
+                    <div class="cell">Amigurumis</div>
                     <div class="cell">Revisión</div>
                 </div>
 
@@ -170,12 +171,14 @@
                                 $fkCliente = htmlspecialchars($pedido['fk_cliente']);
                                 $estado = htmlspecialchars($pedido['estado']);
                                 $fecha = htmlspecialchars($pedido['fecha']);
+                                $fkamigurumis = htmlspecialchars($pedido['fk_amigurumis']);
                             ?>
                             <input type="hidden" class="pedido-id" value="<?= $idPedido; ?>">
                             <div class="cell"><?= $idPedido; ?></div>
                             <div class="cell"><?= $estado; ?></div>
                             <div class="cell"><?= $fecha; ?></div>
                             <div class="cell"><?= $fkCliente; ?></div>
+                            <div class="cell"><?= $fkamigurumis; ?></div>
                             <div class="cell"><button class="ver-pedido">ver</button></div>
                         </div>
                     <?php endforeach; ?>

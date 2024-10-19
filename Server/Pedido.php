@@ -36,22 +36,13 @@ try {
 
                 //con esto se hacegura que el cliente no pida mas de lo que 
                 if ($filaCantidad && $filaCantidad['cantidad_disponible'] >= $cantidad) {
-                    // Si el cliente no tiene amigurumi asignado, se le asigna
-                    if (is_null($fkAmig)) {
-                        // Consulta para actualizar la fk_amigurumis
-                        $sqlid = "UPDATE Cliente SET fk_amigurumis = :idAmig WHERE id_correo = :correo";
-                        $stmtid = $conn->prepare($sqlid);
-                        $stmtid->bindParam(':idAmig', $idAmig, PDO::PARAM_STR);
-                        $stmtid->bindParam(':correo', $cliente, PDO::PARAM_STR);
-                        $stmtid->execute();
-                    }
 
                     // Valor por defecto en metodo_pago
                     $estado = 'Pendiente';
 
                     // Preparar la consulta SQL con parámetros
-                    $sql = "INSERT INTO Pedido (estado, fecha, metodo_pago, cantidad, fk_cliente) 
-                            VALUES (:estado, CURDATE(), :metodo_pago, :cantidad, :fk_cliente)";
+                    $sql = "INSERT INTO Pedido (estado, fecha, metodo_pago, cantidad, fk_cliente, fk_amigurumis) 
+                            VALUES (:estado, CURDATE(), :metodo_pago, :cantidad, :fk_cliente, :fk_amigurumis)";
                     $stmt = $conn->prepare($sql);
 
                     // Vincular los parámetros a los valores
@@ -59,6 +50,7 @@ try {
                     $stmt->bindParam(':metodo_pago', $metodo_pago, PDO::PARAM_STR);
                     $stmt->bindParam(':fk_cliente', $cliente, PDO::PARAM_STR);
                     $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+                    $stmt->bindParam(':fk_amigurumis', $idAmig, PDO::PARAM_STR);
 
                     // Ejecutar la consulta
                     $stmt->execute();

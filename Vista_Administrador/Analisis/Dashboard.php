@@ -18,30 +18,20 @@
 
 </head>
 
-<!--barra de navegacion-->
 <style>
-    /* Estilos adicionales para la barra de navegación fija */
     nav {
         position: fixed;
-        /* Fija la barra de navegación */
         top: 0;
-        /* La barra se fija en la parte superior de la ventana */
         z-index: 1000;
-        /* Asegura que la barra de navegación esté por encima de otros elementos */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        /* Añade una sombra para mayor claridad */
     }
 
     body {
         padding-top: 60px;
-        /* Añade un padding para evitar que el contenido quede oculto detrás de la barra */
     }
 </style>
-<!--barra de navegacion-->
 
 <body class="bg-indigo-#4338ca">
-
-
     <nav>
         <div class="logo">
             <img src="../../Assets/logoMugumis.png" alt="Logo">
@@ -63,15 +53,18 @@
         </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             fetch('api.php')
                 .then(response => response.json())
                 .then(data => {
+                    if (data.ERROR) {
+                        console.error(data.ERROR);
+                        return;
+                    }
                     const labels = data.map(item => item.nombre);
-                    const salesData = data.map(item => item.ventas);
+                    const salesData = data.map(item => item.fk_amigurumis);
 
                     const ctx = document.getElementById('salesChart').getContext('2d');
                     const salesChart = new Chart(ctx, {
@@ -94,7 +87,8 @@
                             }
                         }
                     });
-                });
+                })
+                .catch(error => console.error('Error al obtener los datos:', error));
         });
     </script>
 </body>

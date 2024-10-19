@@ -29,7 +29,6 @@ function mostrarToast(mensaje, tipo) {
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.ver-pedido').forEach(button => {
         button.addEventListener('click', function() {
-            console.log('Entro al script Pedido');
 
             const modalPedido = document.getElementById('modal-pedido');
             modalPedido.style.display = 'block';
@@ -39,12 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const datos = new FormData();
             datos.append('id', idPedido);
-            console.log(datos);
 
             fetch('../Server/gestionPedido.php', { method: 'POST', body: datos })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     const correos = data.fk_cliente;
                     const url = data.direccion_url;
                     const fecha = data.fecha;
