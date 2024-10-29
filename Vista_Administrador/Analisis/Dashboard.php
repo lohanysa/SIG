@@ -18,7 +18,18 @@
 
 </head>
 
+
 <style>
+    .card-img-top {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        /* Esto asegura que la imagen no exceda el ancho del contenedor */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     nav {
         position: fixed;
         top: 0;
@@ -43,54 +54,52 @@
             <li><a href="../p_pedidos.php">Analisis</a></li>
         </ul>
     </nav>
-
-    <div class="mt-4">
-        <div class="container mx-auto p-4">
-            <h1 class="text-2xl font-bold mb-4">Dashboard de Ventas</h1>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <canvas id="salesChart"></canvas>
+    <section id="ventas">
+        <div class="mt-4">
+            <div class="container mx-auto p-4">
+                <h1 class="text-2xl font-bold mb-4">ventas del Mes </h1>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <canvas id="salesChart"></canvas>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="comparacion_de_ventas">
+        <div class="mt-4">
+            <div class="container mx-auto p-4">
+                <h1 class="text-2xl font-bold mb-4">comparacion Mensual de compras</h1>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <canvas id="comparacion"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menos_comprados">
+        <div class="mt-4">
+            <div class="container mx-auto p-4">
+                <h1 class="text-2xl font-bold mb-4">menos populares</h1>
+                <div class="bg-white p-6 rounded-lg shadow-lg" id="menos">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="clientes_frecuentes">
+        <div class="mt-4">
+            <div class="container mx-auto p-4">
+                <h1 class="text-2xl font-bold mb-4">Clientes mas frecuentes</h1>
+                <div class="bg-white p-6 rounded-lg shadow-lg" id="clientes">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('api.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ERROR) {
-                        console.error(data.ERROR);
-                        return;
-                    }
-                    const labels = data.map(item => item.nombre);
-                    const salesData = data.map(item => item.fk_amigurumis);
+    <script src="../../Scripts/api.js" defer></script>
 
-                    const ctx = document.getElementById('salesChart').getContext('2d');
-                    const salesChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Ventas',
-                                data: salesData,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                })
-                .catch(error => console.error('Error al obtener los datos:', error));
-        });
-    </script>
 </body>
 
 </html>
