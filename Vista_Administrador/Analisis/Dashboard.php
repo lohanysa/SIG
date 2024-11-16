@@ -51,7 +51,7 @@
             <li><a href="../p_Gestioncatalogo.php">Catalogo</a></li>
             <li><a href="../P_Producto.html">Añadir Producto</a></li>
             <li><a href="../p_pedidos.php">Pedidos</a></li>
-            <li><a href="../p_pedidos.php">Analisis</a></li>
+            <li><a href="#">Analisis</a></li>
         </ul>
     </nav>
     <section id="ventas">
@@ -74,8 +74,13 @@
                 </div>
             </div>
         </div>
-    </section>
 
+    </section>
+    <div class="mt-4">
+        <div class="container mx-auto p-4">
+            <button id="btnReporte" class="btn btn-success"><a class="text-light" href="reporte.php">Generar reporte</button></a>
+        </div>
+    </div>
     <section id="menos_comprados">
         <div class="mt-4">
             <div class="container mx-auto p-4">
@@ -92,6 +97,27 @@
             <div class="container mx-auto p-4">
                 <h1 class="text-2xl font-bold mb-4">Clientes mas frecuentes</h1>
                 <div class="bg-white p-6 rounded-lg shadow-lg" id="clientes">
+
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog        ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 </div>
             </div>
         </div>

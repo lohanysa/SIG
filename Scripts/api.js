@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
                             <br>
                             cantidad de compras realizadas(transacciones): ${element.cantidad_transacciones}</h6>
                             <!--se podria hacer un boton para enviar promociones a los clientes mas frecuentes ?-->
-                            <a href="#" class="btn btn-primary">enviar correo</a>
                         </div>
                     </div>
                 </div>
@@ -67,6 +66,11 @@ document.addEventListener("DOMContentLoaded", function() {
             });
             //esto es para insertar las filas como como un nodo hijo de clientes
             clientes.appendChild(row);
+
+
+
+
+
         })
         .catch(error => console.error('Error al obtener los datos:', error));
 
@@ -88,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Comparacion de ventas 6 meses',
+                        label: 'Comparacion de ventas',
                         data: salesData,
                         backgroundColor: 'rgba(25, 151, 10, 0.2)',
                         borderColor: 'rgba(25, 151, 10, 1)',
